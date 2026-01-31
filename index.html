@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+  overflow:hidden;
+  font-family:"Segoe UI",sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:32px;
+  border-radius:24px;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  position:relative;
+  z-index:10;
+}
+
+/* LOVE */
+.heart{
+  position:absolute;
+  width:24px;
+  height:24px;
+  background:#ff4d6d;
+  transform:rotate(45deg);
+  animation:float 14s linear infinite;
+  opacity:.7;
+}
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:24px;
+  height:24px;
+  background:#ff4d6d;
+  border-radius:50%;
+}
+.heart::before{top:-12px;left:0;}
+.heart::after{left:-12px;top:0;}
+
+/* FLOWER */
+.flower{
+  position:absolute;
+  width:14px;
+  height:14px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:
+    0 -18px #ffd1dc,
+    18px 0 #ffd1dc,
+    0 18px #ffd1dc,
+    -18px 0 #ffd1dc;
+  animation:float 20s linear infinite;
+  opacity:.8;
+}
+
+/* CONFETTI */
+.confetti{
+  position:absolute;
+  top:-10px;
+  width:10px;
+  height:16px;
+  opacity:.9;
+  animation:confettiFall linear forwards;
+}
+
+@keyframes float{
+  from{transform:translateY(120vh) rotate(0deg);}
+  to{transform:translateY(-120vh) rotate(360deg);}
+}
+
+@keyframes confettiFall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ORNAMEN -->
+<div class="heart" style="left:10%;animation-duration:12s;"></div>
+<div class="heart" style="left:30%;animation-duration:16s;"></div>
+<div class="heart" style="left:60%;animation-duration:14s;"></div>
+<div class="heart" style="left:80%;animation-duration:18s;"></div>
+
+<div class="flower" style="left:20%;animation-duration:22s;"></div>
+<div class="flower" style="left:50%;animation-duration:26s;"></div>
+<div class="flower" style="left:75%;animation-duration:24s;"></div>
+
+<!-- CARD -->
+<div class="card">
+  <h1 style="color:#ff4d6d;margin-top:0;">Happy Birthday 🎂</h1>
+  <p>
+    Semoga hari spesial ini dipenuhi<br>
+    cinta, kebahagiaan, dan senyuman 🤍
+  </p>
+  <p>
+    Terima kasih sudah menjadi bagian<br>
+    yang sangat berarti ✨
+  </p>
+  <hr>
+  <div style="color:#888;">— Dari seseorang yang peduli</div>
+</div>
+
+<!-- CONFETTI SCRIPT -->
+<script>
+const colors = ["#ff4d6d","#ffd166","#6bcf63","#4dabf7","#845ef7"];
+
+for(let i=0;i<40;i++){
+  const confetti = document.createElement("div");
+  confetti.className = "confetti";
+  confetti.style.left = Math.random()*100 + "vw";
+  confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+  confetti.style.animationDuration = (Math.random()*2 + 3) + "s";
+  document.body.appendChild(confetti);
+
+  setTimeout(()=>confetti.remove(),6000);
+}
+</script>
+
+</body>
+</html>
